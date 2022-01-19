@@ -33,26 +33,12 @@ router.get("/", verify, async (req, res) => {
 //GET USER STATS
 router.get("/stats", async (req, res) => {
   const today = new Date();
-  const lastYear = today.setFullYear(today.setFullYear() - 1);
-  const monthsArray = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+ 
   try {
     const data = await User.aggregate([
       {
         $project: {
-          month: { $month: "$createdAt" },
+          month: { $month: "$created_at" },
         },
       },
       {
