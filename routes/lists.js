@@ -14,11 +14,11 @@ router.get("/", verify, async (req, res) => {
           { $sample: { size: 10 } },
           { $match: { type: typeQuery, genre: genreQuery } },
         ]);
-      }else{
-          list = await List.aggregate([
-            { $sample: { size: 10 } },
-            { $match: { type: typeQuery} }
-          ])
+      } else {
+        list = await List.aggregate([
+          { $sample: { size: 10 } },
+          { $match: { type: typeQuery } },
+        ]);
       }
     } else {
       list = await List.aggregate([{ $sample: { size: 10 } }]);
